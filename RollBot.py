@@ -90,7 +90,7 @@ def getMessage():
 @server.route("/")
 def webhook():
     bot.remove_webhook
-    bot.set_webhook(url='https://infinite-depths-02571.herokuapp.com/'
+    bot.set_webhook(url='https://botelegramrollbot.herokuapp.com/'
                     + TOKEN)
     return "!", 200
 
