@@ -1,1 +1,1 @@
-worker: python RollBot.py
+web: python RollBot.py
