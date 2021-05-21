@@ -2,7 +2,7 @@ import telebot
 import logging
 import random
 import os
-from flask import Flask, request
+# from flask import Flask, request
 
 logger = telebot.logger
 telebot.logger.setLevel(logging.DEBUG)
@@ -20,7 +20,7 @@ telebot.logger.setLevel(logging.DEBUG)
 #         bot.sendMessage(chat_id, random.randint(1, 6))
 TOKEN = '1819726569:AAFvgf-gUvd6hxZzVhkVKrNpwOjjRKQGsMA'
 bot = telebot.TeleBot(TOKEN, parse_mode=None)
-server = Flask(__name__)
+# server = Flask(__name__)
 
 
 @bot.message_handler(commands=['start'])
@@ -79,24 +79,24 @@ def fd20(message):
         bot.send_message(chat_id=message.chat.id, text="Fracasso")
 
 
- @server.route('/' + TOKEN, methods=['POST'])
-def getMessage():
-    json_string = request.get_data().decode('utf-8')
-    update = telebot.types.Update.de_json(json_string)
-    bot.process_new_updates([update])
-    return "!", 200       
+#  @server.route('/' + TOKEN, methods=['POST'])
+# def getMessage():
+#     json_string = request.get_data().decode('utf-8')
+#     update = telebot.types.Update.de_json(json_string)
+#     bot.process_new_updates([update])
+#     return "!", 200       
 
 
-@server.route("/")
-def webhook():
-    bot.remove_webhook
-    bot.set_webhook(url='https://botelegramrollbot.herokuapp.com/'
-                    + TOKEN)
-    return "!", 200
+# @server.route("/")
+# def webhook():
+#     bot.remove_webhook
+#     bot.set_webhook(url='https://botelegramrollbot.herokuapp.com/'
+#                     + TOKEN)
+#     return "!", 200
 
 
-if __name__ == "__main__":
-    server.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+# if __name__ == "__main__":
+#     server.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
 
 
-# bot.polling()
+bot.polling()
